@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politică de confidențialitate — Optiman Dashboard</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 760px;
+         margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #222; }
+  h1 { color: #7CB342; } h2 { color: #F7931E; margin-top: 32px; font-size: 20px; }
+  code { background: #f4f4f4; padding: 1px 5px; border-radius: 4px; }
+  .meta { color: #777; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>Politică de confidențialitate</h1>
+<p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
+Ultima actualizare: 7 iulie 2026 · Operator: Optiman Logistic</p>
+
+<p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
+rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
+administratorul rețelei. Aplicația NU este destinată publicului larg și NU se
+adresează minorilor.</p>
+
+<h2>1. Ce date colectăm</h2>
+<ul>
+  <li><strong>Cont și autentificare:</strong> adresa de email și un identificator
+      de utilizator, gestionate prin Firebase Authentication (Google). Parola nu
+      este stocată de aplicație — autentificarea o gestionează Firebase.</li>
+  <li><strong>Token de notificare (FCM):</strong> un identificator anonim al
+      dispozitivului, folosit exclusiv pentru a trimite notificări operaționale
+      (rapoarte, alerte de stoc) către utilizatorii autorizați.</li>
+  <li><strong>Date de business:</strong> informațiile de vânzări, stocuri,
+      produse și rapoarte sunt stocate pe serverele controlate de rețeaua ta
+      (nu de terți), accesate prin conexiune securizată. Aceste date aparțin
+      operatorului rețelei retail.</li>
+</ul>
+
+<h2>2. Cum folosim datele</h2>
+<p>Datele sunt folosite strict pentru funcționarea aplicației: autentificarea
+utilizatorilor, afișarea datelor rețelei căreia îi aparțin, trimiterea
+notificărilor operaționale și izolarea între rețele (fiecare utilizator vede
+doar datele rețelei sale). Nu vindem, nu închiriem și nu partajăm datele cu
+terți în scop de marketing.</p>
+
+<h2>3. Servicii terțe</h2>
+<p>Folosim servicii Google Firebase (Authentication, Cloud Messaging, App Check)
+pentru autentificare, notificări și protecție anti-abuz. Prelucrarea Google se
+supune <a href="https://policies.google.com/privacy">Politicii de confidențialitate Google</a>.</p>
+
+<h2>4. Stocare și securitate</h2>
+<p>Comunicația cu serverele se face criptat (HTTPS/TLS). Accesul la date este
+restricționat pe bază de rol (șef / angajat) și de rețea. Credențialele sensibile
+sunt criptate pe server.</p>
+
+<h2>5. Păstrarea datelor</h2>
+<p>Datele de cont sunt păstrate cât timp contul este activ. La ștergerea contului
+de către administratorul rețelei, datele de autentificare asociate sunt eliminate,
+iar tokenurile de notificare expiră automat.</p>
+
+<h2>6. Drepturile tale</h2>
+<p>Ai dreptul de acces, rectificare și ștergere a datelor personale. Cererile se
+adresează administratorului rețelei tale sau la adresa de contact de mai jos.</p>
+
+<h2>7. Contact</h2>
+<p>Pentru orice întrebare privind această politică: <strong>clanghels@gmail.com</strong>.</p>
+
+<hr>
+<p class="meta"><em>English summary:</em> Optiman Dashboard is a B2B retail-management
+app, access by account only. We collect email + user ID (Firebase Auth) and an
+anonymous FCM device token for operational notifications. Business data is stored
+on servers controlled by your retail network, over encrypted connections. We use
+Google Firebase services; we do not sell or share data for marketing. Contact:
+clanghels@gmail.com.</p>
+</body>
+</html>
