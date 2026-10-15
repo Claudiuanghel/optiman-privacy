@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 7 iulie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 15 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -26,51 +26,227 @@ adresează minorilor.</p>
 <ul>
   <li><strong>Cont și autentificare:</strong> adresa de email și un identificator
       de utilizator, gestionate prin Firebase Authentication (Google). Parola nu
-      este stocată de aplicație — autentificarea o gestionează Firebase.</li>
-  <li><strong>Token de notificare (FCM):</strong> un identificator anonim al
-      dispozitivului, folosit exclusiv pentru a trimite notificări operaționale
-      (rapoarte, alerte de stoc) către utilizatorii autorizați.</li>
+      este stocată de aplicație — autentificarea o gestionează Firebase. În cont
+      sunt păstrate și atributele setate de administrator: rolul (șef / angajat),
+      rețeaua, magazinul și adresa serverului central al rețelei. Adresa de email
+      ajunge la serverele rețelei cu cererile aplicației, ca serverul să verifice
+      contul, și este salvată lângă unele operațiuni, ca să se știe cine le-a
+      făcut (de exemplu produse noi sau fără cod semnalate, cheltuieli, notificări
+      programate, credențiale adăugate, alerte de preț marcate ca văzute). Șefii
+      rețelei pot vedea aceste informații.</li>
+  <li><strong>Token de notificare (FCM):</strong> un identificator al
+      dispozitivului, păstrat pe serverul central al rețelei împreună cu emailul și
+      identificatorul contului, rolul, rețeaua, magazinul și preferințele de
+      notificare alese în aplicație. Este folosit exclusiv pentru notificări
+      operaționale: raportul zilnic de vânzări (pentru șefi), produse fără cod de
+      bare, produse noi adăugate sau semnalate la Verificare preț (notificarea către
+      șefi conține emailul celui care le-a trimis), starea magazinelor și a
+      închiderilor zilnice și mesajele trimise de șef angajaților.</li>
+  <li><strong>Jurnal de activitate:</strong> serverul central înregistrează
+      intrarea și ieșirea din cont, iar serverul central și serverele magazinelor
+      înregistrează acțiunile importante (de exemplu afișarea unei parole salvate,
+      trimiterea unei notificări, modificarea magazinelor, ștergerea sau
+      modificarea unor cheltuieli ori comenzi). Pentru fiecare se salvează adresa
+      de email a contului, acțiunea și detaliile ei (de exemplu magazinul, suma sau
+      denumirea produsului), data și ora, adresa IP de la care a venit cererea și
+      tipul programului client (user-agent). Jurnalul este folosit pentru
+      securitate și audit și poate fi văzut de șefii rețelei.</li>
   <li><strong>Date de business:</strong> informațiile de vânzări, stocuri,
       produse și rapoarte sunt stocate pe serverele controlate de rețeaua ta
-      (nu de terți), accesate prin conexiune securizată. Aceste date aparțin
-      operatorului rețelei retail.</li>
+      (nu de terți). Aceste date aparțin operatorului rețelei retail și pot
+      include date personale ale altor persoane, introduse sau importate de rețea
+      (de exemplu numele clienților de pe facturi, descrierile cheltuielilor sau
+      mesajele trimise angajaților); pentru ele, operatorul este rețeaua retail.</li>
+  <li><strong>Rapoarte de erori (din versiunea 2.2.0):</strong> când aplicația
+      întâlnește o eroare și ești autentificat, trimite un raport tehnic la
+      serverul central al rețelei tale, ca eroarea să poată fi găsită și
+      reparată. Raportul conține: versiunea aplicației, platforma (Android),
+      rețeaua, magazinul și rolul (șef / angajat), numele ecranului deschis, sursa
+      și tipul erorii, un mesaj de eroare scurtat (cel mult 500 de caractere),
+      urma tehnică a erorii (cel mult 2000 de caractere), o amprentă tehnică a
+      erorii (pentru gruparea repetărilor), numărul de repetări și momentul.
+      Raportul nu are un câmp pentru numele sau emailul tău. Înainte de trimitere,
+      telefonul elimină din textul erorii adresele de email, parolele, tokenurile
+      și cheile scrise ca perechi cheie = valoare cu denumirile uzuale (de exemplu
+      password, parola, token, api_key), tokenurile de autentificare, adresele web
+      (http, https, ws), adresele IPv4, numerele de telefon mobil românești scrise
+      fără spații și identificatorul contului; serverul mai elimină o dată adresele
+      de email, tokenurile de autentificare și perechile cheie = valoare. Ca orice cerere a aplicației, cererea care duce raportul poartă
+      tokenul de autentificare și adresa de email a contului; serverul le folosește
+      ca să verifice contul și nu le salvează în raport. Raportul este legat de un
+      <strong>identificator pseudonim</strong> al contului (o amprentă
+      criptografică a identificatorului de cont). Datele sunt deci
+      <strong>pseudonimizate</strong>, nu anonime: operatorul poate afla cărui
+      cont îi aparține un raport. Textul unei erori poate conține, rar, date de
+      lucru ale magazinului (de exemplu un cod sau o denumire de produs) sau un
+      nume. Telefonul trimite cel mult 5 rapoarte la 10 minute, iar aceeași eroare
+      cel mult o dată la 10 minute (repetările dintre timp se numără și se trimit ca
+      număr în raportul următor).</li>
+  <li><strong>Camera și fișierele:</strong> scanarea codurilor de bare se face pe
+      telefon; imaginile camerei nu sunt trimise nicăieri. Poza opțională de la
+      „Preț special” (din cameră sau din galerie) și rapoartele exportate (PDF /
+      Excel) se generează pe telefon și pleacă doar unde le trimiți tu, prin meniul
+      de partajare sau de tipărire al telefonului.</li>
 </ul>
 
 <h2>2. Cum folosim datele</h2>
 <p>Datele sunt folosite strict pentru funcționarea aplicației: autentificarea
 utilizatorilor, afișarea datelor rețelei căreia îi aparțin, trimiterea
-notificărilor operaționale și izolarea între rețele (fiecare utilizator vede
-doar datele rețelei sale). Nu vindem, nu închiriem și nu partajăm datele cu
-terți în scop de marketing.</p>
+notificărilor operaționale, separarea între rețele (fiecare cont primește de la
+administrator o rețea, iar serverele unei rețele resping conturile altor rețele),
+securitatea și auditul
+(jurnalul de activitate) și găsirea și repararea erorilor. Nu vindem, nu
+închiriem și nu partajăm datele cu terți în scop de marketing.</p>
 
 <h2>3. Servicii terțe</h2>
-<p>Folosim servicii Google Firebase (Authentication, Cloud Messaging, App Check)
-pentru autentificare, notificări și protecție anti-abuz. Prelucrarea Google se
-supune <a href="https://policies.google.com/privacy">Politicii de confidențialitate Google</a>.</p>
+<p>Folosim servicii Google: <strong>Firebase</strong> (Authentication, Cloud
+Messaging și App Check, care atestă prin Google Play Integrity că apelurile către
+serviciile Firebase vin din aplicația originală) pentru autentificare, notificări și protecție
+anti-abuz. Serviciile Firebase folosesc și un identificator al instalării
+aplicației. Conținutul notificărilor (de exemplu totalurile din raportul zilnic
+sau mesajele de la șef) este livrat prin Firebase Cloud Messaging, deci trece prin
+infrastructura Google. Scanarea codurilor de bare folosește <strong>Google ML
+Kit</strong>, cu modelul inclus în aplicație: imaginile camerei sunt procesate pe
+telefon și nu părăsesc telefonul, dar ML Kit trimite la Google informații tehnice
+pentru diagnostic și statistici de utilizare (modelul și sistemul de operare al
+telefonului, versiunea aplicației, un identificator al instalării, durate și coduri
+de eroare ale scanării). Prelucrarea Google se supune
+<a href="https://policies.google.com/privacy">Politicii de confidențialitate Google</a>.</p>
+<p>Conexiunile dintre aplicație și serverele rețelei (serverul central și
+serverele magazinelor) trec prin tunelurile <strong>Cloudflare</strong>,
+furnizorul care asigură aceste conexiuni. Cloudflare primește conexiunea HTTPS
+în rețeaua sa, unde o decriptează, și o duce mai departe, printr-un tunel
+criptat, până la serverele rețelei; prelucrează traficul ca furnizor de servicii,
+ca să-l livreze. Asta este valabil pentru tot traficul dintre aplicație și
+serverele rețelei, inclusiv rapoartele de erori; comunicarea cu serviciile Google
+merge direct la Google. Prelucrarea Cloudflare se supune
+<a href="https://www.cloudflare.com/privacypolicy/">Politicii de confidențialitate Cloudflare</a>.</p>
+<p>Rapoartele de erori nu sunt trimise la niciun serviciu terț de analiză sau de
+raportare a erorilor (de exemplu Crashlytics): ajung doar pe serverul central al
+rețelei tale. Dacă administratorul a activat monitorizarea, serverul central
+trimite operatorului tehnic alerte prin <strong>Telegram</strong>: un magazin nu
+răspunde sau și-a revenit, o actualizare a fost aplicată, serverul respinge sau
+eșuează multe cereri, ori au apărut multe erori în aplicație într-un timp scurt
+(numărul lor și cele mai frecvente tipuri de eroare, cu versiunea aplicației).
+Alertele nu conțin emailuri, nume sau identificatori de cont.</p>
 
 <h2>4. Stocare și securitate</h2>
-<p>Comunicația cu serverele se face criptat (HTTPS/TLS). Accesul la date este
-restricționat pe bază de rol (șef / angajat) și de rețea. Credențialele sensibile
-sunt criptate pe server.</p>
+<p>Aplicația se conectează la serverele rețelei la adresele configurate de
+administratorul rețelei; în configurația standard, acestea sunt adrese HTTPS
+(criptate), prin tunelurile Cloudflare. Versiunea curentă a aplicației mai
+acceptă tehnic și conexiuni necriptate (HTTP), dacă o astfel de adresă ar fi
+configurată; vom elimina această posibilitate într-o versiune următoare. Accesul
+la date este restricționat pe bază de rol (șef / angajat) și de rețea. Parolele
+salvate în secțiunea Credențiale a aplicației sunt criptate pe server și se
+afișează doar la cerere, iar fiecare afișare se înregistrează în jurnalul de
+activitate.</p>
+<p><strong>Date păstrate pe telefon:</strong> ca să poți lucra și când serverul
+magazinului nu răspunde, aplicația păstrează pe telefon catalogul de produse
+active al magazinului (coduri, inclusiv codurile alternative, denumiri, prețuri de
+vânzare, cota de TVA, departamentul și unitatea de măsură; fără prețuri de
+achiziție și fără stocuri) și operațiunile făcute fără rețea. Operațiunile
+netrimise (care conțin identificatorul și emailul contului care le-a făcut) rămân
+pe telefon până când sunt trimise sau până când le ștergi, și se trimit doar din
+contul care le-a creat (operațiunile rămase netrimise din versiunile 2.1.x, care
+nu aveau contul salvat, le preia primul cont autentificat cu acces la magazinul
+lor). Cele refuzate de server rămân în lista „Respinse" până când le retrimiți sau
+le ștergi; cele care nu au putut fi trimise timp de 72 de ore trec și ele în
+această listă și se retrimit automat când serverul magazinului răspunde din nou,
+dacă nu le ștergi. Operațiunile netrimise și listele începute și netrimise (de
+exemplu produse expirate, foaia CMR) nu se șterg la ieșirea din cont. Catalogul și
+ultimele date afișate în panouri (păstrate pentru afișare fără rețea) se șterg la
+ieșirea din cont. Dacă bifezi „Ține minte", adresa de email rămâne pe telefon,
+pentru completare automată. Setările aplicației (de exemplu magazinul implicit,
+tema, preferințele de notificare, filtrele salvate) rămân și după ieșirea din
+cont. Rapoartele exportate și imaginile trimise prin partajare rămân în memoria
+temporară a aplicației până când sistemul o golește sau aplicația este
+dezinstalată. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
+în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
+telefon nou.</p>
+<p><strong>Permisiuni:</strong> camera (scanarea codurilor de bare și poza
+opțională de la „Preț special"), notificări și vibrații, acces la internet și la
+starea rețelei, plus permisiunile tehnice adăugate de Firebase pentru primirea
+notificărilor (primirea mesajelor de la Google și menținerea telefonului activ cât
+se procesează o notificare). Aplicația nu cere acces la locație, contacte,
+microfon sau la fișierele telefonului.</p>
 
 <h2>5. Păstrarea datelor</h2>
-<p>Datele de cont sunt păstrate cât timp contul este activ. La ștergerea contului
-de către administratorul rețelei, datele de autentificare asociate sunt eliminate,
-iar tokenurile de notificare expiră automat.</p>
+<ul>
+  <li>Contul din Firebase Authentication este păstrat cât timp contul este activ.
+      La ștergerea contului de către administratorul rețelei, contul este eliminat
+      imediat, iar accesul la servere al sesiunilor deja deschise pe telefoane
+      încetează în cel mult o oră.</li>
+  <li>Înregistrarea telefonului pentru notificări este ștearsă de pe serverul
+      central la ieșirea din cont (dacă telefonul are conexiune); altfel, inclusiv
+      după ștergerea contului, nu mai primește notificări după 30 de zile fără
+      reînregistrare și este eliminată la următoarea curățare zilnică a
+      serverului.</li>
+  <li>Rapoartele de erori se păstrează în baza de date a serverului central cel
+      mult 30 de zile de la ultima apariție a erorii, apoi se șterg automat.</li>
+  <li>Alertele de preț, împreună cu marcajele „văzut" (emailul celui care le-a
+      văzut), se șterg automat la aproximativ 90 de zile de la apariție, cât timp
+      verificarea alertelor de preț este pornită.</li>
+  <li>Jurnalul de activitate și emailul salvat ca autor al operațiunilor de
+      business nu au în prezent un termen de ștergere automată și se păstrează
+      și după ștergerea contului; la cerere, intrările din jurnal care te privesc
+      sunt șterse (vezi secțiunea 6).</li>
+  <li>Copiile de siguranță ale bazelor de date ale serverelor (cel mult ultimele
+      14) și jurnalele tehnice de funcționare ale serverelor pot conține datele de
+      mai sus până la înlocuirea sau ștergerea lor. Jurnalele tehnice conțin adresa
+      IP a cererilor și, la unele evenimente (înregistrarea pentru notificări,
+      trimiterea raportului zilnic, conectarea șefilor la actualizarea în timp real,
+      un acces refuzat), emailul contului, plus un rezumat al primei apariții a unei
+      erori.</li>
+</ul>
 
 <h2>6. Drepturile tale</h2>
 <p>Ai dreptul de acces, rectificare și ștergere a datelor personale. Cererile se
-adresează administratorului rețelei tale sau la adresa de contact de mai jos.</p>
+adresează administratorului rețelei tale sau la adresa de contact de mai jos. La o
+cerere de ștergere eliminăm contul, înregistrarea pentru notificări și intrările
+din jurnalul de activitate care te privesc; emailul poate rămâne ca autor al unor
+operațiuni de business ale magazinului, în jurnalele tehnice ale serverelor și în
+copiile de siguranță, până la înlocuirea sau ștergerea lor; rapoartele de erori
+pseudonimizate se șterg oricum în cel mult 30 de zile.</p>
 
 <h2>7. Contact</h2>
 <p>Pentru orice întrebare privind această politică: <strong>clanghels@gmail.com</strong>.</p>
 
 <hr>
 <p class="meta"><em>English summary:</em> Optiman Dashboard is a B2B retail-management
-app, access by account only. We collect email + user ID (Firebase Auth) and an
-anonymous FCM device token for operational notifications. Business data is stored
-on servers controlled by your retail network, over encrypted connections. We use
-Google Firebase services; we do not sell or share data for marketing. Contact:
-clanghels@gmail.com.</p>
+app, access by account only. We collect your email and user ID (Firebase
+Authentication, plus the role, network, store and server address set by the
+administrator); your email reaches the network's servers with app requests and is
+stored next to some operations you perform. We store an FCM device token, with your
+email, account ID, role, store and notification preferences, on the network's
+central server, only for operational notifications. The network's servers keep an
+activity log (sign-in/sign-out on the central server and important actions, with
+email, action details, IP address and user-agent) for security and audit; it is
+currently not deleted automatically. Activity-log entries about you are deleted on
+request; copies may remain in server backups and technical logs until they are
+replaced, and your email may remain as the author of store business records. Business data is stored on servers
+controlled by your retail network. Since version 2.2.0, when the app hits an error
+while you are signed in, it sends a technical error report (app version, platform,
+network, store, role, screen name, error source and type, a shortened error message
+and stack trace, a technical fingerprint, repeat count and time) to your network's
+own central server, tied to a pseudonymous account identifier (pseudonymised, not
+anonymous) and deleted from the central server's database at most 30 days after the
+error last occurred (server backups and technical logs may keep a copy or a one-line
+summary until they are replaced). The phone removes emails, passwords, tokens and
+keys written as key=value pairs with the usual names, sign-in tokens, web addresses
+(http, https, ws), IPv4 addresses, Romanian mobile numbers written without spaces and
+the account ID from the error text before sending; the request itself carries the
+account's sign-in token and email, which are not stored with the report. Reports
+are not sent to any third-party crash-reporting service; if enabled, the server may
+send the operator Telegram alerts without personal data. We use Google Firebase
+(Authentication, Cloud Messaging, App Check with Play Integrity) and Google ML Kit
+for on-device barcode scanning (camera images stay on the phone; ML Kit sends Google
+technical diagnostics and usage statistics). Connections between the app and the
+network's servers go through Cloudflare tunnels: Cloudflare receives the HTTPS
+connection in its network, decrypts it and forwards it to the servers through an
+encrypted tunnel. In the standard configuration addresses are HTTPS, and the current app version can
+still technically accept plain HTTP addresses, which we will remove. The product catalog, offline operations and unsent drafts are kept
+on the phone (the catalog is deleted at sign-out; unsent operations are not); none
+of this is included in Google backups or device-to-device transfer. We do not sell or
+share data for marketing. Contact: clanghels@gmail.com.</p>
 </body>
 </html>
