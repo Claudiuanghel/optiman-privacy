@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 15 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 20 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -132,10 +132,8 @@ Alertele nu conțin emailuri, nume sau identificatori de cont.</p>
 
 <h2>4. Stocare și securitate</h2>
 <p>Aplicația se conectează la serverele rețelei la adresele configurate de
-administratorul rețelei; în configurația standard, acestea sunt adrese HTTPS
-(criptate), prin tunelurile Cloudflare. Versiunea curentă a aplicației mai
-acceptă tehnic și conexiuni necriptate (HTTP), dacă o astfel de adresă ar fi
-configurată; vom elimina această posibilitate într-o versiune următoare. Accesul
+administratorul rețelei, doar prin HTTPS (criptat), prin tunelurile Cloudflare.
+Din versiunea 2.2.1, aplicația refuză adresele necriptate (HTTP). Accesul
 la date este restricționat pe bază de rol (șef / angajat) și de rețea. Parolele
 salvate în secțiunea Credențiale a aplicației sunt criptate pe server și se
 afișează doar la cerere, iar fiecare afișare se înregistrează în jurnalul de
@@ -269,8 +267,8 @@ for on-device barcode scanning (camera images stay on the phone; ML Kit sends Go
 technical diagnostics and usage statistics). Connections between the app and the
 network's servers go through Cloudflare tunnels: Cloudflare receives the HTTPS
 connection in its network, decrypts it and forwards it to the servers through an
-encrypted tunnel. In the standard configuration addresses are HTTPS, and the current app version can
-still technically accept plain HTTP addresses, which we will remove. The product catalog, offline operations and unsent drafts are kept
+encrypted tunnel. Since version 2.2.1 the app connects only over HTTPS and refuses plain
+HTTP addresses. The product catalog, offline operations and unsent drafts are kept
 on the phone (the catalog is deleted at sign-out; unsent operations are not); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
