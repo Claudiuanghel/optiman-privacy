@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 20 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 23 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -82,6 +82,24 @@ adresează minorilor.</p>
       nume. Telefonul trimite cel mult 5 rapoarte la 10 minute, iar aceeași eroare
       cel mult o dată la 10 minute (repetările dintre timp se numără și se trimit ca
       număr în raportul următor).</li>
+  <li><strong>Numărarea folosirii funcțiilor (din versiunea 2.2.2):</strong> ca
+      administratorul rețelei să afle ce ecrane și butoane se folosesc cel mai des,
+      aplicația numără pe telefon, pentru fiecare zi, de câte ori se deschide fiecare
+      ecran și se apasă fiecare buton principal (de exemplu „Verificare preț:
+      scanează": 12) și trimite serverului central al rețelei tale doar aceste
+      numere, cel mult o dată pe oră. Un lot conține doar ziua, numele fixe ale
+      ecranelor și butoanelor și numerele; nu conține emailul, identificatorul
+      contului, un identificator al telefonului, textul introdus sau codurile și
+      denumirile produselor. Ca orice cerere a aplicației, cererea poartă tokenul de
+      autentificare și adresa de email a contului; serverul le folosește ca să
+      verifice contul și să afle rețeaua și magazinul din atributele contului, și
+      nu le salvează împreună cu numerele (pentru limitarea abuzurilor ține doar în
+      memorie, cel mult 10 minute, câte loturi a trimis fiecare cont). Pe server,
+      numerele se adună pe zi și pe magazin (la angajați, magazinul contului; la
+      șefi, un grup comun „Șefi"), fără să se păstreze cine le-a trimis. Într-un
+      magazin în care o singură persoană folosește aplicația într-o zi, numerele
+      acelei zile arată totuși activitatea acelei persoane; de aceea șefii rețelei
+      văd în aplicație doar totaluri pe perioade de cel puțin 7 zile.</li>
   <li><strong>Camera și fișierele:</strong> scanarea codurilor de bare se face pe
       telefon; imaginile camerei nu sunt trimise nicăieri. Poza opțională de la
       „Preț special” (din cameră sau din galerie) și rapoartele exportate (PDF /
@@ -95,7 +113,8 @@ utilizatorilor, afișarea datelor rețelei căreia îi aparțin, trimiterea
 notificărilor operaționale, separarea între rețele (fiecare cont primește de la
 administrator o rețea, iar serverele unei rețele resping conturile altor rețele),
 securitatea și auditul
-(jurnalul de activitate) și găsirea și repararea erorilor. Nu vindem, nu
+(jurnalul de activitate), găsirea și repararea erorilor și aflarea funcțiilor
+celor mai folosite (numere adunate pe zi și pe magazin, vezi secțiunea 1). Nu vindem, nu
 închiriem și nu partajăm datele cu terți în scop de marketing.</p>
 
 <h2>3. Servicii terțe</h2>
@@ -118,12 +137,13 @@ furnizorul care asigură aceste conexiuni. Cloudflare primește conexiunea HTTPS
 în rețeaua sa, unde o decriptează, și o duce mai departe, printr-un tunel
 criptat, până la serverele rețelei; prelucrează traficul ca furnizor de servicii,
 ca să-l livreze. Asta este valabil pentru tot traficul dintre aplicație și
-serverele rețelei, inclusiv rapoartele de erori; comunicarea cu serviciile Google
+serverele rețelei, inclusiv rapoartele de erori și numerele de utilizare; comunicarea cu serviciile Google
 merge direct la Google. Prelucrarea Cloudflare se supune
 <a href="https://www.cloudflare.com/privacypolicy/">Politicii de confidențialitate Cloudflare</a>.</p>
 <p>Rapoartele de erori nu sunt trimise la niciun serviciu terț de analiză sau de
 raportare a erorilor (de exemplu Crashlytics): ajung doar pe serverul central al
-rețelei tale. Dacă administratorul a activat monitorizarea, serverul central
+rețelei tale. La fel numerele de utilizare: aplicația nu folosește niciun serviciu
+terț de analiză (de exemplu Google Analytics). Dacă administratorul a activat monitorizarea, serverul central
 trimite operatorului tehnic alerte prin <strong>Telegram</strong>: un magazin nu
 răspunde sau și-a revenit, o actualizare a fost aplicată, serverul respinge sau
 eșuează multe cereri, ori au apărut multe erori în aplicație într-un timp scurt
@@ -158,7 +178,10 @@ pentru completare automată. Setările aplicației (de exemplu magazinul implici
 tema, preferințele de notificare, filtrele salvate) rămân și după ieșirea din
 cont. Rapoartele exportate și imaginile trimise prin partajare rămân în memoria
 temporară a aplicației până când sistemul o golește sau aplicația este
-dezinstalată. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
+dezinstalată. Numerele de utilizare netrimise (cel mult ultimele 10 zile), împreună
+cu o amprentă scurtă a contului care le-a făcut (ca să nu fie trimise din alt cont),
+rămân pe telefon până când sunt trimise, și după ieșirea din cont; dacă pe telefon
+intră alt cont, se șterg. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
 în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
 telefon nou.</p>
 <p><strong>Permisiuni:</strong> camera (scanarea codurilor de bare și poza
@@ -181,6 +204,9 @@ microfon sau la fișierele telefonului.</p>
       serverului.</li>
   <li>Rapoartele de erori se păstrează în baza de date a serverului central cel
       mult 30 de zile de la ultima apariție a erorii, apoi se șterg automat.</li>
+  <li>Numerele de utilizare (din versiunea 2.2.2) se păstrează în baza de date a
+      serverului central 365 de zile, apoi se șterg automat; administratorul
+      serverului poate alege un alt termen, între 30 și 1095 de zile.</li>
   <li>Alertele de preț, împreună cu marcajele „văzut" (emailul celui care le-a
       văzut), se șterg automat la aproximativ 90 de zile de la apariție, cât timp
       verificarea alertelor de preț este pornită.</li>
@@ -204,7 +230,9 @@ cerere de ștergere eliminăm contul, înregistrarea pentru notificări și intr
 din jurnalul de activitate care te privesc; emailul poate rămâne ca autor al unor
 operațiuni de business ale magazinului, în jurnalele tehnice ale serverelor și în
 copiile de siguranță, până la înlocuirea sau ștergerea lor; rapoartele de erori
-pseudonimizate se șterg oricum în cel mult 30 de zile.</p>
+pseudonimizate se șterg oricum în cel mult 30 de zile. Numerele de utilizare nu
+păstrează contul care le-a trimis, deci nu pot fi găsite sau șterse pentru o anumită
+persoană; se șterg automat la sfârșitul termenului de păstrare.</p>
 
 <h2 id="stergere-date">7. Cum ceri ștergerea contului și a datelor tale</h2>
 <p>Pentru aplicația <strong>Optiman Dashboard</strong>:</p>
@@ -227,8 +255,10 @@ business ale magazinului (de exemplu produse semnalate, cheltuieli, notificări
 programate), cât timp rețeaua păstrează acele înregistrări; copiile de siguranță ale
 bazelor de date ale serverelor (cel mult ultimele 14) și jurnalele tehnice ale
 serverelor, până la înlocuirea sau ștergerea lor; rapoartele de erori
-pseudonimizate, cel mult 30 de zile de la ultima apariție a erorii.</p>
-<p><strong>Datele de pe telefon</strong> (catalogul, operațiunile netrimise, setările)
+pseudonimizate, cel mult 30 de zile de la ultima apariție a erorii; numerele de
+utilizare, care nu păstrează contul, până la sfârșitul termenului lor de păstrare.</p>
+<p><strong>Datele de pe telefon</strong> (catalogul, operațiunile netrimise, numerele de
+utilizare netrimise, setările)
 le ștergi tu: dezinstalează aplicația sau alege Setări Android → Aplicații →
 Optiman Dashboard → Stocare → Șterge datele.</p>
 
@@ -261,15 +291,25 @@ keys written as key=value pairs with the usual names, sign-in tokens, web addres
 the account ID from the error text before sending; the request itself carries the
 account's sign-in token and email, which are not stored with the report. Reports
 are not sent to any third-party crash-reporting service; if enabled, the server may
-send the operator Telegram alerts without personal data. We use Google Firebase
+send the operator Telegram alerts without personal data. Since version 2.2.2 the app
+counts on the phone, per day, how often each screen is opened and each main button is
+pressed, and sends only these numbers (no email, account ID, device ID, typed text or
+product codes) to your network's central server at most once an hour; the request
+carries the account's sign-in token and email, used only to check the account and find
+its network and store. The server adds the numbers up per day and per store (managers
+in a shared group) without keeping who sent them, deletes them after 365 days by
+default, and shows managers only totals over periods of at least 7 days. In a store
+where only one person uses the app on a given day, that day's numbers still reflect
+that person's activity. No third-party analytics service is used. We use Google Firebase
 (Authentication, Cloud Messaging, App Check with Play Integrity) and Google ML Kit
 for on-device barcode scanning (camera images stay on the phone; ML Kit sends Google
 technical diagnostics and usage statistics). Connections between the app and the
 network's servers go through Cloudflare tunnels: Cloudflare receives the HTTPS
 connection in its network, decrypts it and forwards it to the servers through an
 encrypted tunnel. Since version 2.2.1 the app connects only over HTTPS and refuses plain
-HTTP addresses. The product catalog, offline operations and unsent drafts are kept
-on the phone (the catalog is deleted at sign-out; unsent operations are not); none
+HTTP addresses. The product catalog, offline operations, unsent drafts and unsent
+usage counts are kept on the phone (the catalog is deleted at sign-out; unsent
+operations are not); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
 clanghels@gmail.com from your account's address (subject "Optiman Dashboard data
