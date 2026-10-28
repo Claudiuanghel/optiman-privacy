@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 23 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 28 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -56,7 +56,9 @@ adresează minorilor.</p>
       (nu de terți). Aceste date aparțin operatorului rețelei retail și pot
       include date personale ale altor persoane, introduse sau importate de rețea
       (de exemplu numele clienților de pe facturi, descrierile cheltuielilor sau
-      mesajele trimise angajaților); pentru ele, operatorul este rețeaua retail.</li>
+      mesajele trimise angajaților); pentru ele, operatorul este rețeaua retail.
+      Textul mesajelor trimise de șef angajaților din aplicație se păstrează pe
+      serverul central 180 de zile (vezi secțiunea 5).</li>
   <li><strong>Rapoarte de erori (din versiunea 2.2.0):</strong> când aplicația
       întâlnește o eroare și ești autentificat, trimite un raport tehnic la
       serverul central al rețelei tale, ca eroarea să poată fi găsită și
@@ -157,7 +159,10 @@ Din versiunea 2.2.1, aplicația refuză adresele necriptate (HTTP). Accesul
 la date este restricționat pe bază de rol (șef / angajat) și de rețea. Parolele
 salvate în secțiunea Credențiale a aplicației sunt criptate pe server și se
 afișează doar la cerere, iar fiecare afișare se înregistrează în jurnalul de
-activitate.</p>
+activitate. Parolele conexiunilor la distanță (TeamViewer / UltraViewer) salvate
+în aplicație sunt, de asemenea, criptate pe serverul central și se decriptează
+doar când un cont de șef al rețelei deschide lista conexiunilor; deschiderea
+listei nu se înregistrează în jurnalul de activitate, doar salvarea ei.</p>
 <p><strong>Date păstrate pe telefon:</strong> ca să poți lucra și când serverul
 magazinului nu răspunde, aplicația păstrează pe telefon catalogul de produse
 active al magazinului (coduri, inclusiv codurile alternative, denumiri, prețuri de
@@ -207,13 +212,21 @@ microfon sau la fișierele telefonului.</p>
   <li>Numerele de utilizare (din versiunea 2.2.2) se păstrează în baza de date a
       serverului central 365 de zile, apoi se șterg automat; administratorul
       serverului poate alege un alt termen, între 30 și 1095 de zile.</li>
+  <li>Mesajele trimise de șef angajaților din aplicație (titlul și textul,
+      magazinul căruia i-au fost trimise sau toate magazinele, data și ora și câți
+      angajați le-au primit) se păstrează în baza de date a serverului central 180
+      de zile, apoi se șterg automat; administratorul serverului poate alege un alt
+      termen, între 30 și 1095 de zile. Mesajele programate rămân și în lista
+      notificărilor programate, fără un termen de ștergere automată.</li>
   <li>Alertele de preț, împreună cu marcajele „văzut" (emailul celui care le-a
       văzut), se șterg automat la aproximativ 90 de zile de la apariție, cât timp
       verificarea alertelor de preț este pornită.</li>
-  <li>Jurnalul de activitate și emailul salvat ca autor al operațiunilor de
-      business nu au în prezent un termen de ștergere automată și se păstrează
-      și după ștergerea contului; la cerere, intrările din jurnal care te privesc
-      sunt șterse (vezi secțiunea 6).</li>
+  <li>Intrările din jurnalul de activitate se șterg automat după 365 de zile, pe
+      serverul central și pe serverele magazinelor. Până atunci se păstrează și după
+      ștergerea contului; la cerere, intrările din jurnal care te privesc sunt șterse
+      mai devreme (vezi secțiunea 6).</li>
+  <li>Emailul salvat ca autor al operațiunilor de business nu are în prezent un
+      termen de ștergere automată și se păstrează și după ștergerea contului.</li>
   <li>Copiile de siguranță ale bazelor de date ale serverelor (cel mult ultimele
       14) și jurnalele tehnice de funcționare ale serverelor pot conține datele de
       mai sus până la înlocuirea sau ștergerea lor. Jurnalele tehnice conțin adresa
@@ -274,10 +287,13 @@ stored next to some operations you perform. We store an FCM device token, with y
 email, account ID, role, store and notification preferences, on the network's
 central server, only for operational notifications. The network's servers keep an
 activity log (sign-in/sign-out on the central server and important actions, with
-email, action details, IP address and user-agent) for security and audit; it is
-currently not deleted automatically. Activity-log entries about you are deleted on
+email, action details, IP address and user-agent) for security and audit; entries
+are deleted automatically after 365 days. Activity-log entries about you are deleted on
 request; copies may remain in server backups and technical logs until they are
-replaced, and your email may remain as the author of store business records. Business data is stored on servers
+replaced, and your email may remain as the author of store business records.
+Remote-access passwords (TeamViewer / UltraViewer) saved in the app are stored
+encrypted on the central server. Messages sent by managers to employees through the
+app are kept on the central server for 180 days. Business data is stored on servers
 controlled by your retail network. Since version 2.2.0, when the app hits an error
 while you are signed in, it sends a technical error report (app version, platform,
 network, store, role, screen name, error source and type, a shortened error message
