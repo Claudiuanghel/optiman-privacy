@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 28 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 29 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -84,7 +84,7 @@ adresează minorilor.</p>
       nume. Telefonul trimite cel mult 5 rapoarte la 10 minute, iar aceeași eroare
       cel mult o dată la 10 minute (repetările dintre timp se numără și se trimit ca
       număr în raportul următor).</li>
-  <li><strong>Numărarea folosirii funcțiilor (din versiunea 2.2.2):</strong> ca
+  <li><strong>Numărarea folosirii funcțiilor (din versiunea 2.3.0):</strong> ca
       administratorul rețelei să afle ce ecrane și butoane se folosesc cel mai des,
       aplicația numără pe telefon, pentru fiecare zi, de câte ori se deschide fiecare
       ecran și se apasă fiecare buton principal (de exemplu „Verificare preț:
@@ -186,7 +186,12 @@ temporară a aplicației până când sistemul o golește sau aplicația este
 dezinstalată. Numerele de utilizare netrimise (cel mult ultimele 10 zile), împreună
 cu o amprentă scurtă a contului care le-a făcut (ca să nu fie trimise din alt cont),
 rămân pe telefon până când sunt trimise, și după ieșirea din cont; dacă pe telefon
-intră alt cont, se șterg. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
+intră alt cont, se șterg. Din versiunea 2.3.0, aplicația păstrează pe telefon și
+ultimele 100 de notificări primite (titlul, textul și datele lor, pentru recitire),
+legate de contul care le-a primit: rămân și după ieșirea din cont, dar alt cont de
+pe același telefon nu le vede. Cifrele zilelor încheiate deschise în „Raportul
+zilei” (cel mult ultimele 40 de zile) se păstrează pentru afișare fără rețea și se
+șterg la ieșirea din cont. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
 în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
 telefon nou.</p>
 <p><strong>Permisiuni:</strong> camera (scanarea codurilor de bare și poza
@@ -209,7 +214,7 @@ microfon sau la fișierele telefonului.</p>
       serverului.</li>
   <li>Rapoartele de erori se păstrează în baza de date a serverului central cel
       mult 30 de zile de la ultima apariție a erorii, apoi se șterg automat.</li>
-  <li>Numerele de utilizare (din versiunea 2.2.2) se păstrează în baza de date a
+  <li>Numerele de utilizare (din versiunea 2.3.0) se păstrează în baza de date a
       serverului central 365 de zile, apoi se șterg automat; administratorul
       serverului poate alege un alt termen, între 30 și 1095 de zile.</li>
   <li>Mesajele trimise de șef angajaților din aplicație (titlul și textul,
@@ -271,7 +276,7 @@ serverelor, până la înlocuirea sau ștergerea lor; rapoartele de erori
 pseudonimizate, cel mult 30 de zile de la ultima apariție a erorii; numerele de
 utilizare, care nu păstrează contul, până la sfârșitul termenului lor de păstrare.</p>
 <p><strong>Datele de pe telefon</strong> (catalogul, operațiunile netrimise, numerele de
-utilizare netrimise, setările)
+utilizare netrimise, notificările păstrate, setările)
 le ștergi tu: dezinstalează aplicația sau alege Setări Android → Aplicații →
 Optiman Dashboard → Stocare → Șterge datele.</p>
 
@@ -307,7 +312,7 @@ keys written as key=value pairs with the usual names, sign-in tokens, web addres
 the account ID from the error text before sending; the request itself carries the
 account's sign-in token and email, which are not stored with the report. Reports
 are not sent to any third-party crash-reporting service; if enabled, the server may
-send the operator Telegram alerts without personal data. Since version 2.2.2 the app
+send the operator Telegram alerts without personal data. Since version 2.3.0 the app
 counts on the phone, per day, how often each screen is opened and each main button is
 pressed, and sends only these numbers (no email, account ID, device ID, typed text or
 product codes) to your network's central server at most once an hour; the request
@@ -325,7 +330,10 @@ connection in its network, decrypts it and forwards it to the servers through an
 encrypted tunnel. Since version 2.2.1 the app connects only over HTTPS and refuses plain
 HTTP addresses. The product catalog, offline operations, unsent drafts and unsent
 usage counts are kept on the phone (the catalog is deleted at sign-out; unsent
-operations are not); none
+operations are not); since version 2.3.0 the phone also keeps the last 100
+notifications received (for re-reading, tied to the account that received them and
+not shown to another account) and the figures of closed days opened in the daily
+report (at most 40 days, deleted at sign-out); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
 clanghels@gmail.com from your account's address (subject "Optiman Dashboard data
