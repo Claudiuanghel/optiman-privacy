@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 29 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 30 octombrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -191,7 +191,16 @@ ultimele 100 de notificări primite (titlul, textul și datele lor, pentru recit
 legate de contul care le-a primit: rămân și după ieșirea din cont, dar alt cont de
 pe același telefon nu le vede. Cifrele zilelor încheiate deschise în „Raportul
 zilei” (cel mult ultimele 40 de zile) se păstrează pentru afișare fără rețea și se
-șterg la ieșirea din cont. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
+șterg la ieșirea din cont. Din versiunea 2.3.1, aplicația păstrează pe telefon și
+datele magazinelor pentru zilele și lunile deschise în aplicație (de exemplu pe Acasă
+sau în pagina magazinului): vânzările, costul și profitul, încasările pe metode de
+plată și pe case de marcat, valoarea stocului, topurile de produse, departamente și
+furnizori (cu denumirile și numele lor) și celelalte date din panouri. Așa, o zi sau
+o lună încheiată, deja văzută, se deschide imediat, iar fără rețea se văd ultimele
+cifre păstrate. Pentru fiecare magazin se păstrează cel mult cele mai recente 40 de
+zile și 24 de luni dintre cele deschise în aplicație, plus ultimele date încărcate
+pentru „Azi”; rămân și după repornirea aplicației și se șterg la ieșirea din cont sau
+când pe telefon intră alt cont. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
 în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
 telefon nou.</p>
 <p><strong>Permisiuni:</strong> camera (scanarea codurilor de bare și poza
@@ -276,7 +285,8 @@ serverelor, până la înlocuirea sau ștergerea lor; rapoartele de erori
 pseudonimizate, cel mult 30 de zile de la ultima apariție a erorii; numerele de
 utilizare, care nu păstrează contul, până la sfârșitul termenului lor de păstrare.</p>
 <p><strong>Datele de pe telefon</strong> (catalogul, operațiunile netrimise, numerele de
-utilizare netrimise, notificările păstrate, setările)
+utilizare netrimise, notificările păstrate, datele păstrate pentru afișare fără rețea,
+setările)
 le ștergi tu: dezinstalează aplicația sau alege Setări Android → Aplicații →
 Optiman Dashboard → Stocare → Șterge datele.</p>
 
@@ -333,7 +343,11 @@ usage counts are kept on the phone (the catalog is deleted at sign-out; unsent
 operations are not); since version 2.3.0 the phone also keeps the last 100
 notifications received (for re-reading, tied to the account that received them and
 not shown to another account) and the figures of closed days opened in the daily
-report (at most 40 days, deleted at sign-out); none
+report (at most 40 days, deleted at sign-out); since version 2.3.1 it also keeps the
+store dashboard data of days and months opened in the app (figures, plus product,
+supplier and cash-register names; per store at most the 40 most recent days and 24
+most recent months opened, plus the latest data loaded for the current day; kept
+after a restart, deleted at sign-out or when another account signs in); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
 clanghels@gmail.com from your account's address (subject "Optiman Dashboard data
