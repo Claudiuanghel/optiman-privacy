@@ -193,12 +193,16 @@ pe același telefon nu le vede. Cifrele zilelor încheiate deschise în „Rapor
 zilei” (cel mult ultimele 40 de zile) se păstrează pentru afișare fără rețea și se
 șterg la ieșirea din cont. Din versiunea 2.3.1, aplicația păstrează pe telefon și
 datele magazinelor pentru zilele și lunile deschise în aplicație (de exemplu pe Acasă
-sau în pagina magazinului): vânzările, costul și profitul, încasările pe metode de
+sau în pagina magazinului) și pentru ziua de ieri, pe care aplicația o cere singură
+magazinelor, cu aplicația deschisă și doar după ora 6:00, ca să arate suma ei în banda
+„Raportul de ieri” de pe Acasă (conturile de șef): vânzările, costul și profitul,
+încasările pe metode de
 plată și pe case de marcat, valoarea stocului, topurile de produse, departamente și
 furnizori (cu denumirile și numele lor) și celelalte date din panouri. Așa, o zi sau
 o lună încheiată, deja văzută, se deschide imediat, iar fără rețea se văd ultimele
 cifre păstrate. Pentru fiecare magazin se păstrează cel mult cele mai recente 40 de
-zile și 24 de luni dintre cele deschise în aplicație, plus ultimele date încărcate
+zile și 24 de luni dintre cele deschise în aplicație sau cerute singure de ea, plus
+ultimele date încărcate
 pentru „Azi”; rămân și după repornirea aplicației și se șterg la ieșirea din cont sau
 când pe telefon intră alt cont. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
 în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
@@ -344,9 +348,12 @@ operations are not); since version 2.3.0 the phone also keeps the last 100
 notifications received (for re-reading, tied to the account that received them and
 not shown to another account) and the figures of closed days opened in the daily
 report (at most 40 days, deleted at sign-out); since version 2.3.1 it also keeps the
-store dashboard data of days and months opened in the app (figures, plus product,
+store dashboard data of days and months opened in the app and of the previous day,
+which the app requests from the stores by itself, while open and only after 6:00, to
+show its total in the "Raportul de ieri" (yesterday's report) banner on Home for
+manager accounts (figures, plus product,
 supplier and cash-register names; per store at most the 40 most recent days and 24
-most recent months opened, plus the latest data loaded for the current day; kept
+most recent months opened or requested, plus the latest data loaded for the current day; kept
 after a restart, deleted at sign-out or when another account signs in); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
