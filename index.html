@@ -15,7 +15,7 @@
 <body>
 <h1>Politică de confidențialitate</h1>
 <p class="meta">Aplicația <strong>Optiman Dashboard</strong> (<code>com.optimanlogistic.app</code>)<br>
-Ultima actualizare: 30 octombrie 2026 · Operator: Optiman Logistic</p>
+Ultima actualizare: 7 noiembrie 2026 · Operator: Optiman Logistic</p>
 
 <p>Optiman Dashboard este o aplicație de uz profesional (B2B) destinată gestionării
 rețelelor de magazine retail. Accesul este exclusiv pe bază de cont, alocat de
@@ -58,7 +58,16 @@ adresează minorilor.</p>
       (de exemplu numele clienților de pe facturi, descrierile cheltuielilor sau
       mesajele trimise angajaților); pentru ele, operatorul este rețeaua retail.
       Textul mesajelor trimise de șef angajaților din aplicație se păstrează pe
-      serverul central 180 de zile (vezi secțiunea 5).</li>
+      serverul central 180 de zile (vezi secțiunea 5). Din versiunea 2.5.0, la
+      șef se văd numele și numărul casierilor din programul de casă al
+      magazinului (Sedona), pentru raportul pe casier și pentru verificarea
+      banilor (de exemplu cine a emis un bon fără Z); aceste nume nu apar în
+      notificări și nu se arată angajaților.</li>
+  <li><strong>Ce trimiți din aplicație:</strong> ce trimiți din aplicație
+      (expirate, comenzi, transferuri, foi CMR) se păstrează pe serverul
+      magazinului împreună cu identificatorul contului tău (nu adresa de email)
+      și cu ora trimiterii, ca să le vezi în „Activitatea mea” pe orice telefon.
+      Aceste informații îți sunt arătate doar ție.</li>
   <li><strong>Rapoarte de erori (din versiunea 2.2.0):</strong> când aplicația
       întâlnește o eroare și ești autentificat, trimite un raport tehnic la
       serverul central al rețelei tale, ca eroarea să poată fi găsită și
@@ -187,7 +196,7 @@ dezinstalată. Numerele de utilizare netrimise (cel mult ultimele 10 zile), împ
 cu o amprentă scurtă a contului care le-a făcut (ca să nu fie trimise din alt cont),
 rămân pe telefon până când sunt trimise, și după ieșirea din cont; dacă pe telefon
 intră alt cont, se șterg. Din versiunea 2.3.0, aplicația păstrează pe telefon și
-ultimele 100 de notificări primite (titlul, textul și datele lor, pentru recitire),
+ultimele 200 de notificări primite (titlul, textul și datele lor, pentru recitire),
 legate de contul care le-a primit: rămân și după ieșirea din cont, dar alt cont de
 pe același telefon nu le vede. Cifrele zilelor încheiate deschise în „Raportul
 zilei” (cel mult ultimele 40 de zile) se păstrează pentru afișare fără rețea și se
@@ -204,7 +213,10 @@ cifre păstrate. Pentru fiecare magazin se păstrează cel mult cele mai recente
 zile și 24 de luni dintre cele deschise în aplicație sau cerute singure de ea, plus
 ultimele date încărcate
 pentru „Azi”; rămân și după repornirea aplicației și se șterg la ieșirea din cont sau
-când pe telefon intră alt cont. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
+când pe telefon intră alt cont. Din versiunea 2.5.0, bifele din lista „Etichete de
+schimbat azi” (ce etichete ai pus deja) se țin doar pe telefon, legate de contul
+tău și de magazin: nu se trimit la server, alt cont de pe același telefon nu le
+vede, iar cele mai vechi de 14 zile se șterg la următoarea bifă. Aceste date, ca și sesiunea de autentificare, <strong>nu sunt incluse
 în backup-ul Google al telefonului</strong> și nu se copiază la transferul pe un
 telefon nou.</p>
 <p><strong>Permisiuni:</strong> camera (scanarea codurilor de bare și poza
@@ -236,6 +248,10 @@ microfon sau la fișierele telefonului.</p>
       de zile, apoi se șterg automat; administratorul serverului poate alege un alt
       termen, între 30 și 1095 de zile. Mesajele programate rămân și în lista
       notificărilor programate, fără un termen de ștergere automată.</li>
+  <li>Starea citit / necitit a notificărilor: serverul central ține, pentru contul
+      tău (după identificatorul contului, fără email), care notificări le-ai citit,
+      ca numărul de necitite să fie același pe orice telefon. Starea se păstrează
+      180 de zile, apoi se șterge automat.</li>
   <li>Alertele de preț, împreună cu marcajele „văzut" (emailul celui care le-a
       văzut), se șterg automat la aproximativ 90 de zile de la apariție, cât timp
       verificarea alertelor de preț este pornită.</li>
@@ -290,7 +306,7 @@ pseudonimizate, cel mult 30 de zile de la ultima apariție a erorii; numerele de
 utilizare, care nu păstrează contul, până la sfârșitul termenului lor de păstrare.</p>
 <p><strong>Datele de pe telefon</strong> (catalogul, operațiunile netrimise, numerele de
 utilizare netrimise, notificările păstrate, datele păstrate pentru afișare fără rețea,
-setările)
+bifele etichetelor, setările)
 le ștergi tu: dezinstalează aplicația sau alege Setări Android → Aplicații →
 Optiman Dashboard → Stocare → Șterge datele.</p>
 
@@ -312,8 +328,11 @@ request; copies may remain in server backups and technical logs until they are
 replaced, and your email may remain as the author of store business records.
 Remote-access passwords (TeamViewer / UltraViewer) saved in the app are stored
 encrypted on the central server. Messages sent by managers to employees through the
-app are kept on the central server for 180 days. Business data is stored on servers
-controlled by your retail network. Since version 2.2.0, when the app hits an error
+app are kept on the central server for 180 days. The central server also keeps, per
+account (by account ID, without email), which notifications you have read, so the
+unread count is the same on every phone; this read / unread state is kept for 180
+days, then deleted automatically. Business data is stored on servers
+controlled by your retail network. Since version 2.5.0, manager accounts see the names and numbers of the cashiers from the store's point-of-sale software (Sedona) in the per-cashier report and the cash check; these names are not sent in notifications and are not shown to employees. Since version 2.2.0, when the app hits an error
 while you are signed in, it sends a technical error report (app version, platform,
 network, store, role, screen name, error source and type, a shortened error message
 and stack trace, a technical fingerprint, repeat count and time) to your network's
@@ -333,7 +352,11 @@ product codes) to your network's central server at most once an hour; the reques
 carries the account's sign-in token and email, used only to check the account and find
 its network and store. The server adds the numbers up per day and per store (managers
 in a shared group) without keeping who sent them, deletes them after 365 days by
-default, and shows managers only totals over periods of at least 7 days. In a store
+default, and shows managers only totals over periods of at least 7 days. What you
+send from the app (expired products, orders, transfers, CMR sheets) is kept on the
+store's server together with your account ID (not your email) and the time it was
+sent, so you can see it in "Activitatea mea" (My activity) on any phone; this
+information is shown only to you. In a store
 where only one person uses the app on a given day, that day's numbers still reflect
 that person's activity. No third-party analytics service is used. We use Google Firebase
 (Authentication, Cloud Messaging, App Check with Play Integrity) and Google ML Kit
@@ -344,7 +367,7 @@ connection in its network, decrypts it and forwards it to the servers through an
 encrypted tunnel. Since version 2.2.1 the app connects only over HTTPS and refuses plain
 HTTP addresses. The product catalog, offline operations, unsent drafts and unsent
 usage counts are kept on the phone (the catalog is deleted at sign-out; unsent
-operations are not); since version 2.3.0 the phone also keeps the last 100
+operations are not); since version 2.3.0 the phone also keeps the last 200
 notifications received (for re-reading, tied to the account that received them and
 not shown to another account) and the figures of closed days opened in the daily
 report (at most 40 days, deleted at sign-out); since version 2.3.1 it also keeps the
@@ -354,7 +377,7 @@ show its total in the "Raportul de ieri" (yesterday's report) banner on Home for
 manager accounts (figures, plus product,
 supplier and cash-register names; per store at most the 40 most recent days and 24
 most recent months opened or requested, plus the latest data loaded for the current day; kept
-after a restart, deleted at sign-out or when another account signs in); none
+after a restart, deleted at sign-out or when another account signs in); since version 2.5.0 it also keeps, only on the phone, the ticks of the "Etichete de schimbat azi" (price labels to change) list, tied to your account and store, not sent to any server and not shown to another account (older than 14 days removed at the next tick); none
 of this is included in Google backups or device-to-device transfer. We do not sell or
 share data for marketing. To request deletion of your account or data, email
 clanghels@gmail.com from your account's address (subject "Optiman Dashboard data
